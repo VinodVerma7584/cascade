@@ -1,4 +1,4 @@
-VERSION="0.2.23"
+VERSION="0.2.24"
 NAME="cascade"
 KEEP=2
 

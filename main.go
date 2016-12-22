@@ -30,6 +30,7 @@ func init() {
 		command.Node,
 		command.Role,
 		command.Service,
+		command.Wait,
 	)
 }
 

@@ -1,0 +1,14 @@
+{
+  "ID": "redis1",
+  "Name": "redis",
+  "Tags": [
+    "primary",
+    "v1"
+  ],
+  "Address": "127.0.0.1",
+  "Port": 8000,
+  "Check": {
+    "Script": "/Users/jesse/Projects/gocode/src/github.com/boundary/cascade/test/check_redis.sh",
+    "Interval": "2s"
+  }
+}
