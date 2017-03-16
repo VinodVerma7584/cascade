@@ -7,7 +7,7 @@ Set up the build on Ubuntu
 ============
 
 ### Install go and checkout source
-1. install go, version should be 1.6. I am using see the tar file in the repsitory
+1. install go, version should be 1.6.
 ```
 curl -O https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
 tar xvf go1.6.linux-amd64.tar 
