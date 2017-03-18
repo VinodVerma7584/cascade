@@ -56,7 +56,7 @@ func waitFor(serviceName string) error {
 	// Setup watch
 	watchParams := make(map[string]interface{})
 
-	watchParams["type"] = "service"
+	watchParams["type"] = "checks"
 	watchParams["service"] = serviceName
 
 	theWatch, err := watch.Parse(watchParams)
@@ -65,10 +65,11 @@ func waitFor(serviceName string) error {
 	}
 
 	theWatch.Handler = func(idx uint64, data interface{}) {
-		services := data.([]*api.ServiceEntry)
+		services := data.([]*api.HealthCheck)
+
 		for _, service := range services {
-			fmt.Println(service.Service.ID + " = " + service.Checks.AggregatedStatus())
-			if service.Checks.AggregatedStatus() == api.HealthPassing {
+			if service.Status == api.HealthPassing {
+				fmt.Println("passing: " + service.ServiceID)
 				theWatch.Stop()
 			}
 		}
