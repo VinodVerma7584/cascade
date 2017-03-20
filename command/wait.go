@@ -65,13 +65,22 @@ func waitFor(serviceName string) error {
 	}
 
 	theWatch.Handler = func(idx uint64, data interface{}) {
-		services := data.([]*api.HealthCheck)
+		checks := data.([]*api.HealthCheck)
 
-		for _, service := range services {
-			if service.Status == api.HealthPassing {
-				fmt.Println("passing: " + service.ServiceID)
-				theWatch.Stop()
+		passedCount := 0
+		for _, check := range checks {
+			if check.Status == api.HealthPassing {
+				fmt.Println("passing: " + check.CheckID)
+				passedCount ++
+			} else {
+				fmt.Println("not passing: " + check.CheckID)
 			}
+		}
+
+		totalCount := len(checks)
+		if totalCount > 0 && passedCount == totalCount {
+			fmt.Println("all passing")
+			theWatch.Stop()
 		}
 	}
 
