@@ -22,7 +22,7 @@ import (
 	"github.com/jwaldrip/odin/cli"
 )
 
-var cascade = cli.New("0.0.1", "cascade", cli.ShowUsage)
+var cascade = cli.New("0.2.6", "cascade", cli.ShowUsage)
 
 func init() {
 	cascade.AddSubCommands(
